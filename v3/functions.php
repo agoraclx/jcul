@@ -7,8 +7,6 @@
   You have been warned!
 
   ------------------------------------------------------------------------------------- */
-
-
 // Define Theme Name for localization
 if(!defined('THB_THEME_NAME'))
 {
