@@ -228,3 +228,33 @@ function delete_expired_db_transients()
     delete_transient($key);
   }
 }
+
+// Add Shortcode for single content and place it anyware in content
+function leak_custom($atts)
+{
+  ob_start();
+  extract(shortcode_atts(
+      array(
+    'slug' => '',
+      ), $atts)
+  );
+
+  // WP_Query arguments
+  $kleng = array(
+    'name'                   => $slug,
+    'posts_per_page'         => 1,
+    'cache_results'          => true,
+    'update_post_meta_cache' => true,
+    'update_post_term_cache' => true,
+  );
+
+
+  $kuluk = new WP_Query($kleng);
+  while($kuluk->have_posts()): $kuluk->the_post();
+    $output = '<div class="cicing">'.the_content().'</div>';
+  endwhile;
+  wp_reset_postdata();
+  return $output.ob_get_clean();
+}
+
+add_shortcode('loopcontent', 'leak_custom');
