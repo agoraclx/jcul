@@ -194,7 +194,7 @@ function agoraclx_dash()
 	<li>Release Date: April 2014</li>
 	<li>Author: Agora CLx.</li>
 	<li>j-cul.com</li>
-  <li>".base64_decode(base64_encode('UlcxaGFXd2dlVzkxY2lCeVpYTjFiV1VnZEc4Z1oyVnVZbWw2UUhkdmNtUm1aVzVqWlM1amIyMGdkMmwwYUNCMGFHVWdjM1ZpYW1WamRDQWlTbTlpSUdGd2NHeHBZMkYwYVc5dUlpNGdWMlVuWkNCc2IzWmxJSFJ2SUdobFlYSWdabkp2YlNCNWIzVXU='))."</li>
+	<li>".base64_decode(base64_encode('UlcxaGFXd2dlVzkxY2lCeVpYTjFiV1VnZEc4Z1oyVnVZbWw2UUhkdmNtUm1aVzVqWlM1amIyMGdkMmwwYUNCMGFHVWdjM1ZpYW1WamRDQWlTbTlpSUdGd2NHeHBZMkYwYVc5dUlpNGdWMlVuWkNCc2IzWmxJSFJ2SUdobFlYSWdabkp2YlNCNWIzVXU='))."</li>
 	</ul>";
 }
 
@@ -230,6 +230,7 @@ function delete_expired_db_transients()
 }
 
 // Add Shortcode for single content and place it anyware in content
+// untuk post gen dude
 function leak_custom($atts)
 {
   ob_start();
@@ -248,10 +249,9 @@ function leak_custom($atts)
     'update_post_term_cache' => true,
   );
 
-
   $kuluk = new WP_Query($kleng);
   while($kuluk->have_posts()): $kuluk->the_post();
-    $output = '<div class="cicing">'.the_content().'</div>';
+    $output = the_content();
   endwhile;
   wp_reset_postdata();
   return $output.ob_get_clean();
